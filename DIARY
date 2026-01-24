@@ -1,0 +1,57 @@
+import os
+
+FILENAME = "gratitude.txt"
+
+def show_entries():
+    if os.path.exists(FILENAME):
+        with open(FILENAME, "r", encoding="utf-8") as f:
+            entries = f.readlines()
+        if entries:
+            print("\n💖 Твои моменты благодарности:")
+            for i, entry in enumerate(entries, 1):
+                print(f"{i}. {entry.strip()}")
+        else:
+            print("Пока ничего не записано... Но сегодня ещё не кончился! 🌼")
+    else:
+        print("Ты ещё не писал сюда ничего. Начнём? 🌱")
+
+def add_entry():
+    print("\nНапиши, за что ты благодарен сегодня (можно несколько строк, заверши пустой строкой):")
+    lines = []
+    while True:
+        line = input()
+        if line == "":
+            break
+        lines.append(line)
+    
+    if lines:
+        with open(FILENAME, "a", encoding="utf-8") as f:
+            f.write("--- Новая запись ---\n")
+            for line in lines:
+                f.write(line + "\n")
+            f.write("\n")
+        print("Сохранено! Ты молодец, Ваня. 🌟")
+    else:
+        print("Ничего не добавлено.")
+
+def main():
+    print("🌷 Добро пожаловать в твой дневник благодарности!")
+    while True:
+        print("\nМеню:")
+        print("1. Посмотреть записи")
+        print("2. Добавить новую запись")
+        print("3. Выйти")
+        choice = input("Выбери (1/2/3): ").strip()
+        
+        if choice == "1":
+            show_entries()
+        elif choice == "2":
+            add_entry()
+        elif choice == "3":
+            print("Спасибо, что был здесь. Ты важен. 💗")
+            break
+        else:
+            print("Пожалуйста, выбери 1, 2 или 3.")
+
+if __name__ == "__main__":
+    main()
