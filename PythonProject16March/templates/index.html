@@ -1,0 +1,8 @@
+{% block content %}
+    <a href = "materials">Материалы</a>
+
+    {% for material in materials %}
+        <h3>{{ material.title }}</h3>
+        <p>{{ material.author }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block content %}
+            <h3>{{ material.title }}</h3>
+            <p>{{ material.id }}</p>
+            <p>{{ material.category }}</p>
+            <p>{{ material.author }}</p>
+            <p>{{ material.description }}</p>
+            <a href="{{ url_for('mater') }}">Назад к списку</a>
+    {% endblock %}
